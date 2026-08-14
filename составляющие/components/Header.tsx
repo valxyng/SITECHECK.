@@ -1,1 +1,0 @@
-export function Header(){return <header className="header"><a className="brand" href="/">SITECHECK<span>.</span></a><nav><a href="#check">Проверить сайт</a><a href="#how">Как это работает</a><a href="#about">О сервисе</a></nav><a className="header-cta" href="#check">Начать проверку <b>↗</b></a></header>}

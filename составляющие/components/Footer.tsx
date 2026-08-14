@@ -1,1 +1,0 @@
-export function Footer(){return <footer><a className="brand" href="/">SITECHECK<span>.</span></a><p>Пассивный аудит публично доступных сайтов.</p><a className="portfolio-link" href="https://valxyng.github.io/portfolio/" target="_blank" rel="noreferrer">Портфолио разработчика ↗</a><p>© {new Date().getFullYear()}</p></footer>}

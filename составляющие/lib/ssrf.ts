@@ -1,5 +1,0 @@
-import { lookup } from "node:dns/promises";
-import net from "node:net";
-function blockedV4(ip:string){const p=ip.split(".").map(Number);return p[0]===0||p[0]===10||p[0]===127||p[0]>=224||(p[0]===169&&p[1]===254)||(p[0]===172&&p[1]>=16&&p[1]<=31)||(p[0]===192&&p[1]===168)||(p[0]===100&&p[1]>=64&&p[1]<=127);}
-function blockedV6(ip:string){const v=ip.toLowerCase();return v==="::1"||v==="::"||v.startsWith("fe80:")||v.startsWith("fc")||v.startsWith("fd")||v.startsWith("::ffff:127.")||v.startsWith("::ffff:10.")||v.startsWith("::ffff:192.168.");}
-export async function assertPublicUrl(raw:string) { const url=new URL(raw); const host=url.hostname.toLowerCase(); if(host==="localhost"||host.endsWith(".localhost")||host.endsWith(".local")||host==="metadata.google.internal") throw new Error("Этот адрес недоступен для проверки."); const type=net.isIP(host); const addresses=type?[{address:host}]:await lookup(host,{all:true,verbatim:true}).catch(()=>{throw new Error("Не удалось найти домен. Проверьте URL.")}); if(addresses.some(({address})=>net.isIP(address)===4?blockedV4(address):blockedV6(address))) throw new Error("Внутренние и локальные адреса нельзя проверять."); }
