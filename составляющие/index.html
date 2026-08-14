@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050505" />
+  <title>Copy That UI — Разборщик UI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar"><a class="brand" href="#top"><i></i><span>copy that<span class="muted">.ui</span></span></a><div class="top-actions"><span class="demo-pill"><b></b>Демо-анализ</span><button class="ghost small" id="resetBtn">Новый анализ</button></div></header>
+
+  <main id="top">
+    <section class="hero" id="hero">
+      <div class="eyebrow"><span></span>Визуальная декомпозиция интерфейсов</div>
+      <h1>Разберите любой интерфейс <em>за секунды.</em></h1>
+      <p>Загрузите скриншот сайта и получите структуру дизайна, цвета, стили и готовые CSS-переменные.</p>
+      <div class="hero-actions"><button class="primary" data-upload><span>+</span>Загрузить скриншот</button><button class="ghost" id="demoBtn">Посмотреть пример <span class="arrow">↗</span></button></div>
+      <p class="disclaimer">Инструмент помогает анализировать визуальный стиль интерфейса и создавать похожие решения.</p>
+      <div class="preview-orb"><div class="orb-card orb-a"><small>PRIMARY</small><strong>#7C3AED</strong></div><div class="orb-card orb-b"><small>RADIUS</small><strong>24px</strong></div><div class="orb-card orb-c"><span>✦</span> Design decoded</div></div>
+    </section>
+
+    <section class="workspace hidden" id="workspace">
+      <div class="workspace-heading"><div><div class="eyebrow"><span></span>Анализ интерфейса</div><h2>Ваш UI <em>разобран.</em></h2></div><div class="stats"><div><b>12</b><span>цветов найдено</span></div><div><b>8</b><span>компонентов</span></div><div><b>5</b><span>CSS-параметров</span></div></div></div>
+      <div class="dashboard">
+        <aside class="screenshot-panel glass">
+          <div class="panel-top"><span>Исходный экран</span><div class="screen-tools"><button id="gridToggle" title="Сетка">#</button><button id="blocksToggle" title="Блоки">□</button><button id="compareToggle" title="Сравнить">↔</button></div></div>
+          <div class="canvas-wrap" id="canvasWrap"><img id="screenshot" alt="Загруженный скриншот" /><canvas id="pickerCanvas"></canvas><div class="grid-overlay"></div><div class="blocks-overlay"><i></i><i></i><i></i><i></i></div><div class="picker-dot" id="pickerDot"></div></div>
+          <div class="picked-color" id="pickedColor"><span></span><p>Нажмите на изображение,<br>чтобы взять цвет</p><code>—</code></div>
+        </aside>
+        <section class="analysis-panel glass">
+          <nav class="tabs" role="tablist"><button class="active" data-tab="colors">Цвета</button><button data-tab="fonts">Шрифты</button><button data-tab="components">Компоненты</button><button data-tab="styles">Стили</button><button data-tab="css">CSS</button></nav>
+          <div class="tab-content active" id="colors"><div class="content-intro"><div><span class="kicker">ПАЛИТРА</span><h3>Найденные цвета</h3></div><button class="icon-button" id="copyPalette" title="Скопировать палитру">⧉</button></div><div class="color-grid" id="colorGrid"></div><div class="ai-note"><span>✦</span><div><b>Описание дизайна</b><p>Минималистичный премиальный интерфейс с тёмной темой, контрастными акцентами и крупной типографикой. Подойдёт для SaaS, портфолио и технологических компаний.</p></div></div></div>
+          <div class="tab-content" id="fonts"><div class="content-intro"><div><span class="kicker">ТИПОГРАФИКА</span><h3>Modern Sans</h3></div><span class="confidence">92% совпадение</span></div><div class="font-specimen heading-font">Заголовок, который<br>создаёт настроение <span>32px / 700</span></div><div class="font-specimen body-font">Основной текст легко читается и сохраняет спокойный, уверенный ритм интерфейса. <span>16px / 400</span></div><div class="font-list"><span>Похожие шрифты</span><div><button>Inter</button><button>Manrope</button><button>Montserrat</button><button>Playfair Display</button></div></div></div>
+          <div class="tab-content" id="components"><div class="content-intro"><div><span class="kicker">СТРУКТУРА</span><h3>8 компонентов</h3></div></div><div class="component-list"><article><div class="component-icon">▰</div><div><b>Primary button</b><code>&lt;button class="primary-btn"&gt;</code></div><button class="copy-code" data-code="&lt;button class=&quot;primary-btn&quot;&gt;Начать&lt;/button&gt;">⧉</button></article><article><div class="component-icon">▤</div><div><b>Navigation bar</b><code>&lt;nav class="navbar"&gt;</code></div><button class="copy-code" data-code="&lt;nav class=&quot;navbar&quot;&gt;&lt;/nav&gt;">⧉</button></article><article><div class="component-icon">▧</div><div><b>Glass card</b><code>&lt;article class="card"&gt;</code></div><button class="copy-code" data-code="&lt;article class=&quot;card&quot;&gt;&lt;/article&gt;">⧉</button></article><article><div class="component-icon">▱</div><div><b>Hero block</b><code>&lt;section class="hero"&gt;</code></div><button class="copy-code" data-code="&lt;section class=&quot;hero&quot;&gt;&lt;/section&gt;">⧉</button></article></div></div>
+          <div class="tab-content" id="styles"><div class="content-intro"><div><span class="kicker">ДИЗАЙН-ТОКЕНЫ</span><h3>Визуальный язык</h3></div></div><div class="style-grid"><div><small>Border radius</small><strong>24px</strong><div class="radius-sample"></div></div><div><small>Blur</small><strong>20px</strong><div class="blur-sample"></div></div><div><small>Shadow</small><strong>Soft / XL</strong><div class="shadow-sample"></div></div><div><small>Spacing</small><strong>8px system</strong><div class="spacing-sample"><i></i><i></i><i></i><i></i></div></div></div></div>
+          <div class="tab-content" id="css"><div class="content-intro"><div><span class="kicker">ГОТОВО К ИСПОЛЬЗОВАНИЮ</span><h3>CSS-переменные</h3></div><button class="primary compact" id="copyCss">Скопировать CSS</button></div><pre id="cssCode"></pre><div class="exports"><button class="ghost" id="downloadCss">↓ Скачать CSS</button><button class="ghost" id="downloadJson">↓ Скачать JSON</button></div></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="drop-section" id="dropSection"><div class="drop-zone" id="dropZone"><input id="fileInput" type="file" accept="image/*" capture="environment" /><div class="upload-icon">↑</div><h3>Перетащите скриншот сюда</h3><p>PNG, JPG или WEBP · до 10 МБ</p><button class="ghost" data-upload>Выбрать файл</button></div></section>
+  </main>
+  <div class="loader hidden" id="loader"><div class="loader-card"><div class="scan-line"></div><div class="loader-mark">✦</div><h3 id="loaderText">Анализируем интерфейс...</h3><p>Это займёт всего несколько секунд</p><div class="progress"><i></i></div></div></div>
+  <div class="toast" id="toast">Скопировано в буфер обмена</div>
+  <script src="script.js"></script>
+</body>
+</html>
